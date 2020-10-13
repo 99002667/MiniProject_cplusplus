@@ -2,7 +2,7 @@ all: all.out
 all.out: Actual.o Expected.o completedata.o comparision.o test_f.o
 	g++ $^ -o $@ -lgtest -lgtest_main -lpthread
 
-test_f.o: test_f.cpp Actual.h Expected.h completedata.h comparision.h 
+main.o: main.cpp Actual.h Expected.h completedata.h comparision.h 
 	g++ $< -c
 
 comparision.o: comparision.cpp comparision.h Actual.h Expected.h completedata.h
