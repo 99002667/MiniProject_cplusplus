@@ -18,6 +18,23 @@ jobs:
         sudo apt-get -y install valgrind
         sudo apt-get -y install libcunit1 libcunit1-doc libcunit1-dev 
     - name: make test
-      run: |
-        make  ./all.out
-        valgrind ./all.out
+     all: all.out 
+    all.out: Actual.o Expected.o completedata.o comparision.o test_f.o
+            	g++ $^ -o $@ -lgtest -lgtest_main -lpthread
+
+     main.o: main.cpp Actual.h Expected.h completedata.h comparision.h 
+             	g++ $< -c
+
+     comparision.o: comparision.cpp comparision.h Actual.h Expected.h completedata.h
+	               g++ $< -c
+     completedata.o: completedata.cpp completedata.h Actual.h Expected.h
+	                g++ $< -c
+     Actual.o: Actual.cpp Actual.h
+                	g++ $< -c
+    Expected.o: Expected.cpp Expected.h
+            	g++ $< -c
+valgrind: ./all.out
+	valgrind ./all.out
+
+clean:
+	rm -rf *.o *.out *.gch
