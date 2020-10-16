@@ -19,7 +19,7 @@ jobs:
         sudo apt-get -y install libcunit1 libcunit1-doc libcunit1-dev 
     - name: make test
      all: all.out 
-    all.out: Actual.o Expected.o completedata.o comparision.o test_f.o
+     all.out: Actual.o Expected.o completedata.o comparision.o test_f.o
             	g++ $^ -o $@ -lgtest -lgtest_main -lpthread
 
      valgrind: ./all.out
