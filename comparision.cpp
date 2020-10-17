@@ -232,14 +232,24 @@ int comparision::avgpower_E(){
    double Th = MaxThermal_E();
    double Nu = MaxNuclear_E();
    double Hy = MaxHydro_E();
+   if((Th>=0)&&(Nu>=0)&&(Hy>=0)){
    int avg = ((Th+Nu+Hy)/3);
    return avg;
+   }
+   else{
+          return 0;
+   }
 }
 
 int comparision::avgpower_A(){
    double Th = MaxThermal();
    double Nu = MaxNuclear();
    double Hy = MaxHydro();
+   if((Th>=0)&&(Nu>=0)&&(Hy>=0)){
    int avg = ((Th+Nu+Hy)/3);
    return avg;
+   }
+   else{
+          return 0;
+   }
 }
