@@ -33,7 +33,9 @@ double comparision::MaxThermal(){
 double comparision::MaxNuclear(){
 
      std::list<complete> :: iterator iter = data.begin();
-
+       
+   if(data.begin() == 0){
+          
     double Max = iter-> getNuclear_A();
         iter++;
 
@@ -45,7 +47,11 @@ double comparision::MaxNuclear(){
         }
      }
 
-     return Max;
+    return Max;
+   }
+       else{
+       return 0;
+       }
 }
 
 double comparision::MaxHydro(){
